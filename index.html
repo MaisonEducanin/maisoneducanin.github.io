@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Maison Éducanin - Pension & Éducation canine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --sage:       #5C7260;
+  --sage-dark:  #3D4E40;
+  --sage-deep:  #2C3A2E;
+  --sage-mid:   #7A9080;
+  --sage-pale:  #A8BFB0;
+  --sage-frost: #D4E2D8;
+  --sage-mist:  #EBF2ED;
+  --rose:       #D4A0A0;
+  --rose-pale:  #F0E0DC;
+  --cream:      #FAF6F0;
+  --gold:       #B8922A;
+  --gold-light: #D4A843;
+  --ink:        #1E2820;
+  --bark:       #4A3228;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--sage-deep);
+  color: var(--cream);
+  font-family: 'Lora', Georgia, serif;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  opacity: 0.75;
+}
+
+.display {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.05;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 6vw;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(44,58,46,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(168,191,176,0.12);
+  transition: all 0.4s;
+}
+
+nav.scrolled {
+  height: 64px;
+  background: rgba(44,58,46,0.97);
+  box-shadow: 0 2px 40px rgba(0,0,0,0.25);
+}
+
+.nav-logo img {
+  height: 52px;
+  width: auto;
+  filter: brightness(0) invert(1) sepia(0.15) brightness(0.95);
+  transition: opacity 0.3s;
+}
+.nav-logo img:hover { opacity: 0.85; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s, color 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--cream); }
+
+.nav-cta {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  background: var(--sage-pale);
+  padding: 10px 26px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.nav-cta:hover { background: var(--cream); transform: translateY(-1px); }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 6vw;
+  background: var(--sage-deep);
+}
+
+.hero-circle-1 {
+  position: absolute;
+  width: 55vw; height: 55vw;
+  max-width: 780px; max-height: 780px;
+  background: radial-gradient(circle, var(--sage-dark) 0%, var(--sage-deep) 70%);
+  border-radius: 50%;
+  right: -18vw; top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(168,191,176,0.12);
+}
+
+.hero-circle-2 {
+  position: absolute;
+  width: 38vw; height: 38vw;
+  max-width: 520px; max-height: 520px;
+  background: rgba(92,114,96,0.18);
+  border-radius: 50%;
+  right: -8vw; top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid rgba(168,191,176,0.18);
+}
+
+.hero-logo-circle {
+  position: absolute;
+  right: -8vw; top: 50%;
+  transform: translateY(-50%);
+  width: 38vw;
+  max-width: 520px;
+  height: 38vw;
+  max-height: 520px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+.hero-logo-circle img {
+  width: 62%;
+  height: 62%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) translateY(0); }
+  50%       { transform: translateY(-50%) translateY(-12px); }
+}
+
+.hero-content {
+  max-width: 580px;
+  position: relative;
+  z-index: 2;
+  padding-top: 76px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s 0.1s both;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: var(--sage-pale);
+  opacity: 0.5;
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 5.5vw, 6rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.15em;
+  animation: fadeUp 0.8s 0.2s both;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage-pale);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--sage-pale);
+  opacity: 0.85;
+  margin-bottom: 2.8rem;
+  line-height: 1.65;
+  animation: fadeUp 0.8s 0.3s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  animation: fadeUp 0.8s 0.4s both;
+}
+
+.btn-main {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  background: var(--cream);
+  padding: 15px 36px;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+  z-index: -1;
+}
+.btn-main:hover { color: var(--cream); }
+.btn-main:hover::after { transform: scaleX(1); }
+
+.btn-ghost {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s, gap 0.3s;
+}
+.btn-ghost:hover { color: var(--cream); gap: 0.9rem; }
+.btn-ghost::after { content: '→'; }
+
+section {
+  padding: 120px 6vw;
+  position: relative;
+}
+
+.philosophie {
+  background: var(--cream);
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+.philo-left {
+  background: var(--sage);
+  padding: 100px 8vw 100px 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.philo-left::before {
+  content: '"';
+  position: absolute;
+  top: -40px; left: 30px;
+  font-family: 'Playfair Display', serif;
+  font-size: 28rem;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.philo-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.45;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.philo-quote strong {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--sage-frost);
+}
+
+.philo-attribution {
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  opacity: 0.7;
+}
+
+.philo-right {
+  padding: 100px 6vw 100px 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--cream);
+}
+
+.philo-right .eyebrow {
+  color: var(--sage);
+  opacity: 1;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.philo-right .eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--sage);
+  display: block;
+}
+
+.philo-right h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  color: var(--sage-deep);
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.philo-right h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage);
+}
+
+.philo-text {
+  font-size: 1.08rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #3A3028;
+  margin-bottom: 1.4rem;
+}
+
+.philo-text:last-child { margin-bottom: 0; }
+
+.philo-principles {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.principle {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.principle-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+.principle-text {
+  font-size: 0.96rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #3A3028;
+}
+
+.principle-text strong {
+  font-weight: 600;
+  color: var(--sage-dark);
+  display: block;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.02em;
+}
+
+.proprio {
+  background: var(--sage-deep);
+  overflow: hidden;
+}
+
+.proprio-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.proprio-logo {
+  width: 180px;
+  margin: 0 auto 4rem;
+  opacity: 0.15;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+
+.proprio::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: rgba(92,114,96,0.08);
+  border: 1px solid rgba(168,191,176,0.1);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.proprio::after {
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: rgba(92,114,96,0.06);
+  border: 1px solid rgba(168,191,176,0.12);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.proprio .eyebrow {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.proprio .eyebrow::before,
+.proprio .eyebrow::after {
+  content: '';
+  width: 32px; height: 1px;
+  background: var(--sage-pale);
+  opacity: 0.4;
+  display: block;
+}
+
+.proprio-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+  line-height: 1.1;
+}
+
+.proprio-title {
+  font-size: 0.82rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  opacity: 0.65;
+  margin-bottom: 3.5rem;
+}
+
+.proprio-story {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage-frost);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proprio-body {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--sage-pale);
+  opacity: 0.82;
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+}
+
+.proprio-bridge {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(168,191,176,0.15);
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.bridge-stat {
+  text-align: center;
+}
+
+.bridge-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.bridge-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  opacity: 0.6;
+  line-height: 1.5;
+}
+
+.services {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 120px 6vw;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-header .eyebrow {
+  color: var(--sage);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.services-header .eyebrow::before,
+.services-header .eyebrow::after {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--sage);
+  opacity: 0.5;
+  display: block;
+}
+
+.services-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--sage-deep);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.services-header h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage);
+}
+
+.services-header p {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: #5A5040;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3px;
+  background: var(--sage-frost);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: var(--cream);
+  padding: 64px 48px;
+  position: relative;
+  transition: background 0.4s;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--sage);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.service-card:hover { background: var(--sage-mist); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-num {
+  position: absolute;
+  top: 2.5rem; right: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--sage-frost);
+  line-height: 1;
+  transition: color 0.4s;
+}
+.service-card:hover .service-num { color: rgba(92,114,96,0.12); }
+
+.service-icon {
+  width: 52px; height: 52px;
+  background: var(--sage);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+.service-card:hover .service-icon { background: var(--sage-dark); }
+
+.service-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--sage-deep);
+  margin-bottom: 0.6rem;
+  line-height: 1.1;
+}
+
+.service-subtitle {
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+}
+
+.service-desc {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #4A4030;
+  margin-bottom: 2.5rem;
+}
+
+.service-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 2.5rem;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.92rem;
+  color: #3A3828;
+}
+
+.service-item::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Lora', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(92,114,96,0.3);
+  padding-bottom: 3px;
+  transition: all 0.3s;
+}
+.service-link:hover {
+  color: var(--sage-dark);
+  border-color: var(--sage-dark);
+  gap: 0.9rem;
+}
+.service-link::after { content: '→'; }
+
+.cta-final {
+  background: var(--sage);
+  text-align: center;
+  padding: 120px 6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-final::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.cta-final::after {
+  content: '';
+  position: absolute;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.cta-final .eyebrow {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  position: relative; z-index: 1;
+}
+.cta-final .eyebrow::before,
+.cta-final .eyebrow::after {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--sage-frost);
+  opacity: 0.5;
+  display: block;
+}
+
+.cta-final h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.12;
+  margin-bottom: 1.5rem;
+  position: relative; z-index: 1;
+}
+
+.cta-final h2 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage-frost);
+}
+
+.cta-final p {
+  font-size: 1.08rem;
+  font-weight: 300;
+  color: var(--sage-frost);
+  opacity: 0.88;
+  max-width: 480px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.8;
+  position: relative; z-index: 1;
+}
+
+.cta-btns {
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+
+.btn-cta-main {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  background: var(--cream);
+  padding: 15px 40px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-cta-main:hover { background: var(--sage-frost); transform: translateY(-2px); }
+
+.btn-cta-ghost {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-frost);
+  border: 1px solid rgba(212,226,216,0.4);
+  padding: 14px 32px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-cta-ghost:hover { border-color: var(--cream); color: var(--cream); }
+
+footer {
+  background: var(--sage-deep);
+  padding: 60px 6vw 36px;
+  border-top: 1px solid rgba(168,191,176,0.1);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(168,191,176,0.1);
+}
+
+.footer-logo img {
+  height: 56px;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+}
+
+.footer-links-col h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--sage-pale);
+  opacity: 0.5;
+  margin-bottom: 1.2rem;
+}
+
+.footer-links-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links-col a {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--sage-pale);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.footer-links-col a:hover { opacity: 1; }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--sage-pale);
+  opacity: 0.35;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(22px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .philosophie { grid-template-columns: 1fr; }
+  .philo-left { padding: 80px 6vw; }
+  .philo-right { padding: 80px 6vw; }
+  .services-grid { grid-template-columns: 1fr; }
+  .proprio-bridge { gap: 3rem; flex-wrap: wrap; }
+  .footer-inner { flex-direction: column; }
+  .nav-links { display: none; }
+  .hero-logo-bg { opacity: 0.1; width: 55vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#philosophie">Philosophie</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Nous joindre</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="accueil">
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+
+  <!-- Remplace "votre-logo.png" par le nom de ton fichier logo -->
+  <div class="hero-logo-circle">
+    <img src="votre-logo.png" alt="Logo La Maison Éducanin">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow">Pension & Éducation canine</span>
+    </div>
+    <h1 class="hero-title display">
+      La maison<br>de <em>votre chien.</em>
+    </h1>
+    <p class="hero-sub">
+      Un espace de vie, de liberté et d'apprentissage<br>
+      fondé sur le respect profond de l'animal.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-main">Découvrir nos services</a>
+      <a href="#apropos" class="btn-ghost">Notre philosophie</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHIE -->
+<section class="philosophie" id="philosophie">
+  <div class="philo-left reveal">
+    <p class="philo-quote">
+      « Un chien <strong>épanoui</strong> n'est pas un chien <strong>dressé à obéir</strong>
+      c'est un chien qui comprend,<br>qui fait confiance,<br>
+      et qui <strong>choisit</strong> de collaborer. »
+    </p>
+    <span class="philo-attribution">Philosophie Éducanin</span>
+  </div>
+
+  <div class="philo-right reveal">
+    <span class="eyebrow">Notre école de pensée</span>
+    <h2 class="display">
+      La liberté<br>comme <em>fondation.</em>
+    </h2>
+    <p class="philo-text">
+      Chez La Maison Éducanin, votre chien n'est pas un pensionnaire parmi d'autres.
+      Il vit dans une vraie maison, avec une vraie famille. Il dort où les autres chiens dorment,
+      mange avec eux, joue librement, parce que c'est dans ce cadre naturel que l'équilibre se construit.
+    </p>
+    <p class="philo-text">
+      L'éducation n'est pas une contrainte imposée. C'est une conversation bienveillante,
+      menée avec patience et cohérence, dans le respect absolu de l'instinct et de la personnalité de chaque animal.
+    </p>
+
+    <div class="philo-principles">
+      <div class="principle">
+        <div class="principle-dot"></div>
+        <p class="principle-text">
+          <strong>Liberté dans la maison</strong>
+          Votre chien circule librement, dort en famille et vit comme un vrai membre de la maison.
+        </p>
+      </div>
+      <div class="principle">
+        <div class="principle-dot"></div>
+        <p class="principle-text">
+          <strong>Respect de l'instinct animal</strong>
+          Chaque apprentissage part de qui est votre chien, pas d'un modèle standard à reproduire.
+        </p>
+      </div>
+      <div class="principle">
+        <div class="principle-dot"></div>
+        <p class="principle-text">
+          <strong>Cohérence et bienveillance</strong>
+          Aucune punition, aucune coercition, seulement la clarté, la répétition et la confiance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="proprio" id="apropos">
+  <div class="proprio-inner">
+
+    <span class="eyebrow">Derrière la maison</span>
+
+    <h2 class="proprio-name display reveal">Valérie Lymburner</h2>
+    <p class="proprio-title">Fondatrice · Propriétaire · Éducatrice canine</p>
+
+    <p class="proprio-story reveal">
+      « Mon expérience en santé dentaire m'a appris une chose essentielle :
+      la qualité du soin dépend entièrement de la qualité de la présence. »
+    </p>
+
+    <p class="proprio-body reveal">
+      Cette conviction, je l'ai transposée entièrement dans mon travail avec les chiens.
+      Une carrière fondée sur l'observation minutieuse, la précision du geste et la relation de confiance
+      avec chaque patient, ces principes guident aujourd'hui chaque journée à La Maison Éducanin.
+    </p>
+
+    <p class="proprio-body reveal">
+      Il n'y a pas d'équipe. Pas de rotation de personnel. Quand vous nous confiez votre chien,
+      c'est à moi qu'il est confié, toujours. C'est là que réside la différence.
+    </p>
+
+    <div class="proprio-bridge reveal">
+      <div class="bridge-stat">
+        <div class="bridge-num">1</div>
+        <div class="bridge-label">Seule personne<br>responsable</div>
+      </div>
+      <div class="bridge-stat">
+        <div class="bridge-num">100%</div>
+        <div class="bridge-label">Dévouée à<br>votre chien</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <span class="eyebrow">Ce que nous offrons</span>
+    <h2 class="display">Trois formules,<br><em>une même attention.</em></h2>
+    <p>Chaque séjour est unique, chaque chien est traité comme un individu.
+       Il n'y a pas de formule standard, seulement ce dont votre chien a besoin.</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- Service 1 : Pension -->
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <div class="service-icon">🏡</div>
+      <h3 class="service-title display">Pension</h3>
+      <p class="service-subtitle">Séjour résidentiel</p>
+      <p class="service-desc">
+        Votre chien séjourne dans notre maison familiale, pas dans un chenil.
+        Il dort à l'intérieur, partage les espaces de vie, et bénéficie d'une présence
+        humaine constante et bienveillante du matin au soir.
+      </p>
+      <div class="service-includes">
+        <div class="service-item">Liberté de circulation dans la maison</div>
+        <div class="service-item">Sorties et activités quotidiennes</div>
+        <div class="service-item">Suivi personnalisé et rapports aux propriétaires</div>
+        <div class="service-item">Alimentation adaptée à vos habitudes</div>
+      </div>
+      <a href="#contact" class="service-link">Faire une demande</a>
+    </div>
+
+    <!-- Service 2 : Pension-Éducation -->
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <div class="service-icon">🌿</div>
+      <h3 class="service-title display">Pension<br>& Éducation</h3>
+      <p class="service-subtitle">Séjour avec apprentissage</p>
+      <p class="service-desc">
+        Tout le confort de la pension, enrichi d'un travail éducatif quotidien.
+        Chaque apprentissage est intégré naturellement dans la journée, jamais forcé,
+        toujours en lien avec la personnalité et le rythme de votre chien.
+      </p>
+      <div class="service-includes">
+        <div class="service-item">Tout ce qui est inclus dans la pension</div>
+        <div class="service-item">Sessions d'éducation quotidiennes sur mesure</div>
+        <div class="service-item">Renforcement positif exclusivement</div>
+        <div class="service-item">Guide de continuité remis aux propriétaires</div>
+        <div class="service-item">Suivi post-séjour inclus</div>
+      </div>
+      <a href="#contact" class="service-link">Faire une demande</a>
+    </div>
+
+    <!-- Service 3 : Éducation (cours) -->
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <div class="service-icon">🎓</div>
+      <h3 class="service-title display">Éducation<br>(cours)</h3>
+      <p class="service-subtitle">Séances individuelles ou en petits groupes · 1h30</p>
+      <p class="service-desc">
+        Des séances d'éducation adaptées à votre chien et à vos objectifs, en format individuel
+        ou en petits groupes. Une approche sur mesure pour développer les bons comportements
+        et renforcer le lien entre vous et votre animal.
+      </p>
+      <div class="service-includes">
+        <div class="service-item">Séances de 1h30</div>
+        <div class="service-item">Format individuel ou petits groupes</div>
+        <div class="service-item">Apprentissage par renforcement positif</div>
+        <div class="service-item">Conseils personnalisés aux propriétaires</div>
+        <div class="service-item">Suivi et progression à votre rythme</div>
+      </div>
+      <a href="#contact" class="service-link">Faire une demande</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final" id="contact">
+  <span class="eyebrow">Commencer</span>
+  <h2 class="display reveal">
+    Votre chien mérite<br><em>une vraie maison.</em>
+  </h2>
+  <p class="reveal">
+    Les places sont limitées intentionnellement,
+    pour que chaque chien reçoive l'attention qu'il mérite.
+  </p>
+  <div class="cta-btns reveal">
+    <a href="tel:+14188121788" class="btn-cta-main">📞 418-812-1788</a>
+    <a href="/cdn-cgi/l/email-protection#1f697e737a6d767a736672402e265f77706b727e7673317c7e" class="btn-cta-ghost">✉ Écrire un message</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+    </div>
+    <div class="footer-links-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#philosophie">Philosophie</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Pension résidentielle</a></li>
+        <li><a href="#services">Pension & Éducation</a></li>
+        <li><a href="#services">Éducation (cours)</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h4>Nous joindre</h4>
+      <ul>
+        <li><a href="tel:+14188121788">📞 418-812-1788</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#4731262b22352e222b3e2a18767e072f28332a262e2b692426">✉ <span class="__cf_email__" data-cfemail="e492858881968d81889d89bbd5dda48c8b9089858d88ca8785">[email&#160;protected]</span></a></li>
+        <li><a href="#">📍 Rive-Sud de Montréal, Québec</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 La Maison Éducanin. Tous droits réservés.</span>
+    <span>Fait avec soin, pour les chiens qu'on aime.</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new Intersect
