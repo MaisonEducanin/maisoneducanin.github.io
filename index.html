@@ -79,6 +79,15 @@ nav.scrolled {
   box-shadow: 0 2px 40px rgba(0,0,0,0.25);
 }
 
+.nav-logo img {
+  height: 52px;
+  width: auto;
+  transition: opacity 0.3s;
+  /* Fond beige du logo visible sur la nav sombre */
+  border-radius: 4px;
+}
+.nav-logo img:hover { opacity: 0.85; }
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -143,27 +152,22 @@ nav.scrolled {
   border: 1px solid rgba(168,191,176,0.18);
 }
 
-.hero-logo-circle {
+.hero-logo-float {
   position: absolute;
-  right: -8vw; top: 50%;
+  right: 4vw; top: 50%;
   transform: translateY(-50%);
-  width: 38vw;
-  max-width: 520px;
-  height: 38vw;
-  max-height: 520px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 34vw;
+  max-width: 460px;
   pointer-events: none;
   animation: float 6s ease-in-out infinite;
   z-index: 2;
+  mix-blend-mode: luminosity;
+  opacity: 0.88;
 }
 
-.hero-logo-circle img {
-  width: 62%;
-  height: 62%;
-  object-fit: contain;
+.hero-logo-float img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -837,6 +841,13 @@ footer {
   border-bottom: 1px solid rgba(168,191,176,0.1);
 }
 
+.footer-logo img {
+  height: 90px;
+  width: auto;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
 .footer-links-col h4 {
   font-size: 0.68rem;
   letter-spacing: 0.38em;
@@ -912,7 +923,7 @@ footer {
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo"></a>
+<a href="#" class="nav-logo"><img src="Logo.png" alt="La Maison Éducanin"></a>
   <ul class="nav-links">
     <li><a href="#philosophie">Philosophie</a></li>
     <li><a href="#apropos">À propos</a></li>
@@ -926,8 +937,8 @@ footer {
   <div class="hero-circle-1"></div>
   <div class="hero-circle-2"></div>
 
-  <!-- Remplace "votre-logo.png" par le nom exact de ton fichier logo -->
-  <div class="hero-logo-circle">
+  <!-- Logo flottant à droite -->
+  <div class="hero-logo-float">
     <img src="Logo.png" alt="Logo La Maison Éducanin">
   </div>
 
@@ -1122,14 +1133,14 @@ footer {
   </p>
   <div class="cta-btns reveal">
     <a href="tel:+14188121788" class="btn-cta-main">📞 418-812-1788</a>
-    <a href="mailto:valerielym_19@hotmail.ca" class="btn-cta-ghost">✉ Écrire un message</a>
+    <a href="/cdn-cgi/l/email-protection#fb8d9a979e89929e978296a4cac2bb93948f969a9297d5989a" class="btn-cta-ghost">✉ Écrire un message</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo"></div>
+    <div class="footer-logo"><img src="Logo.png" alt="La Maison Éducanin"></div>
     <div class="footer-links-col">
       <h4>Navigation</h4>
       <ul>
@@ -1151,7 +1162,7 @@ footer {
       <h4>Nous joindre</h4>
       <ul>
         <li><a href="tel:+14188121788">📞 418-812-1788</a></li>
-        <li><a href="mailto:valerielym_19@hotmail.ca">✉ valerielym_19@hotmail.ca</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b2c4d3ded7c0dbd7decbdfed838bf2daddc6dfd3dbde9cd1d3">✉ <span class="__cf_email__" data-cfemail="e593848980978c80899c88bad4dca58d8a9188848c89cb8684">[email&#160;protected]</span></a></li>
         <li><a href="#">📍 Rive-Sud de Montréal, Québec</a></li>
       </ul>
     </div>
@@ -1162,7 +1173,7 @@ footer {
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
@@ -1175,16 +1186,4 @@ footer {
   const reveals = document.querySelectorAll('.reveal');
   reveals.forEach(el => el.classList.add('will-animate'));
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  reveals.forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+  const io = new Intersecti
