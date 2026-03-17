@@ -79,14 +79,6 @@ nav.scrolled {
   box-shadow: 0 2px 40px rgba(0,0,0,0.25);
 }
 
-.nav-logo img {
-  height: 52px;
-  width: auto;
-  filter: brightness(0) invert(1) sepia(0.15) brightness(0.95);
-  transition: opacity 0.3s;
-}
-.nav-logo img:hover { opacity: 0.85; }
-
 .nav-links {
   display: flex;
   align-items: center;
@@ -172,7 +164,6 @@ nav.scrolled {
   width: 62%;
   height: 62%;
   object-fit: contain;
-  border-radius: 50%;
   display: block;
 }
 
@@ -385,8 +376,6 @@ section {
   margin-bottom: 1.4rem;
 }
 
-.philo-text:last-child { margin-bottom: 0; }
-
 .philo-principles {
   margin-top: 3rem;
   display: flex;
@@ -434,14 +423,6 @@ section {
   text-align: center;
   position: relative;
   z-index: 1;
-}
-
-.proprio-logo {
-  width: 180px;
-  margin: 0 auto 4rem;
-  opacity: 0.15;
-  filter: brightness(0) invert(1);
-  display: block;
 }
 
 .proprio::before {
@@ -533,9 +514,7 @@ section {
   gap: 5rem;
 }
 
-.bridge-stat {
-  text-align: center;
-}
+.bridge-stat { text-align: center; }
 
 .bridge-num {
   font-family: 'Playfair Display', serif;
@@ -858,12 +837,6 @@ footer {
   border-bottom: 1px solid rgba(168,191,176,0.1);
 }
 
-.footer-logo img {
-  height: 56px;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
-}
-
 .footer-links-col h4 {
   font-size: 0.68rem;
   letter-spacing: 0.38em;
@@ -904,12 +877,17 @@ footer {
   to   { opacity:1; transform: translateY(0); }
 }
 
+/* Reveal — visible par défaut, animation optionnelle via JS */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible {
+.reveal.will-animate {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal.will-animate.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -926,7 +904,7 @@ footer {
   .proprio-bridge { gap: 3rem; flex-wrap: wrap; }
   .footer-inner { flex-direction: column; }
   .nav-links { display: none; }
-  .hero-logo-bg { opacity: 0.1; width: 55vw; }
+  .hero-logo-circle { width: 55vw; height: 55vw; }
 }
 </style>
 </head>
@@ -934,8 +912,7 @@ footer {
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">
-  </a>
+  <a href="#" class="nav-logo"></a>
   <ul class="nav-links">
     <li><a href="#philosophie">Philosophie</a></li>
     <li><a href="#apropos">À propos</a></li>
@@ -949,7 +926,7 @@ footer {
   <div class="hero-circle-1"></div>
   <div class="hero-circle-2"></div>
 
-  <!-- Remplace "votre-logo.png" par le nom de ton fichier logo -->
+  <!-- Remplace "votre-logo.png" par le nom exact de ton fichier logo -->
   <div class="hero-logo-circle">
     <img src="Logo.png" alt="Logo La Maison Éducanin">
   </div>
@@ -976,7 +953,7 @@ footer {
 <section class="philosophie" id="philosophie">
   <div class="philo-left reveal">
     <p class="philo-quote">
-      « Un chien <strong>épanoui</strong> n'est pas un chien <strong>dressé à obéir</strong>
+      « Un chien <strong>épanoui</strong> n'est pas un chien <strong>dressé à obéir</strong>,
       c'est un chien qui comprend,<br>qui fait confiance,<br>
       et qui <strong>choisit</strong> de collaborer. »
     </p>
@@ -1072,7 +1049,6 @@ footer {
   </div>
 
   <div class="services-grid">
-    <!-- Service 1 : Pension -->
     <div class="service-card reveal">
       <span class="service-num">01</span>
       <div class="service-icon">🏡</div>
@@ -1092,7 +1068,6 @@ footer {
       <a href="#contact" class="service-link">Faire une demande</a>
     </div>
 
-    <!-- Service 2 : Pension-Éducation -->
     <div class="service-card reveal">
       <span class="service-num">02</span>
       <div class="service-icon">🌿</div>
@@ -1113,7 +1088,6 @@ footer {
       <a href="#contact" class="service-link">Faire une demande</a>
     </div>
 
-    <!-- Service 3 : Éducation (cours) -->
     <div class="service-card reveal">
       <span class="service-num">03</span>
       <div class="service-icon">🎓</div>
@@ -1148,15 +1122,14 @@ footer {
   </p>
   <div class="cta-btns reveal">
     <a href="tel:+14188121788" class="btn-cta-main">📞 418-812-1788</a>
-    <a href="/cdn-cgi/l/email-protection#1f697e737a6d767a736672402e265f77706b727e7673317c7e" class="btn-cta-ghost">✉ Écrire un message</a>
+    <a href="mailto:valerielym_19@hotmail.ca" class="btn-cta-ghost">✉ Écrire un message</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">
-    </div>
+    <div class="footer-logo"></div>
     <div class="footer-links-col">
       <h4>Navigation</h4>
       <ul>
@@ -1178,7 +1151,7 @@ footer {
       <h4>Nous joindre</h4>
       <ul>
         <li><a href="tel:+14188121788">📞 418-812-1788</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#4731262b22352e222b3e2a18767e072f28332a262e2b692426">✉ <span class="__cf_email__" data-cfemail="e492858881968d81889d89bbd5dda48c8b9089858d88ca8785">[email&#160;protected]</span></a></li>
+        <li><a href="mailto:valerielym_19@hotmail.ca">✉ valerielym_19@hotmail.ca</a></li>
         <li><a href="#">📍 Rive-Sud de Montréal, Québec</a></li>
       </ul>
     </div>
@@ -1189,11 +1162,29 @@ footer {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
+  // Reveal au scroll
+  // Les éléments sont visibles par défaut (opacity:1)
+  // Le JS ajoute "will-animate" pour les cacher, puis "visible" quand ils entrent dans la vue
   const reveals = document.querySelectorAll('.reveal');
-  const io = new Intersect
+  reveals.forEach(el => el.classList.add('will-animate'));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
